@@ -1,6 +1,40 @@
 = actionmailer_extensions
 
-Description goes here.
+These extensions wrap around the "deliver!" method on ActionMailer::Base to provide:
+* save all outgoing emails to disk, and
+* a list of recipient email addresses that are safe to receive mail. All other mail is not sent.
+
+== Saving email to disk
+
+Sending email with markup from a web app is a pain in the ass because HTML markup renders differently in every
+email client. (If you don't believe me, check out this {matrix of CSS support across the different email clients}[http://www.campaignmonitor.com/css/?utm_medium=email&utm_source=Email%20marketing%20software&utm_content=299578507&utm_campaign=September+News+-+Version+A+_+khihur&utm_term=AllnewCSSguidecovering24emailclients].
+
+The only foolproof way to ensure that your content is rendering properly is to visually inspect the emails yourself. To get going, configure ActionMailer like so:
+
+  require 'actionmailer_extensions'
+  ActionMailer::Base.save_emails_to_disk  = true          # Defaults to false
+  ActionMailer::Base.email_output_dir     = "some/path"   # Defaults to "/tmp/actionmailer_output_emails"
+  
+  Then send some emails with ActionMailer, and inspect the files in the output path that you specified. The emails are 
+  saved with a .eml extension which should open in your favourite email client, for easy visual inspection.
+  
+
+== Safe recipients list
+
+Ever found that you want to limit the list of people that can receive email from a Rails app? This is a particularly handy feature during development, when you don't want your (unfinished) application to send out real mail to people beyond the dev team.
+
+Configure ActionMailer like so:
+
+  require 'actionmailer_extensions'
+  ActionMailer::Base.safe_recipients = ["pete@example.com", "dave@foo.com"]
+
+Pete and Dave are the *only* recipients that ActionMailer will send to. All other mail will be quietly dropped. (And logged to disk, if save_emails_to_disk is enabled.)
+
+== Install
+
+  gem source --add http://gemcutter.org
+  gem install actionmailer_extensions
+
 
 == Note on Patches/Pull Requests
  
