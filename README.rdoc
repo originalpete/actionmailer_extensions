@@ -15,8 +15,7 @@ The only foolproof way to ensure that your content is rendering properly is to v
   ActionMailer::Base.save_emails_to_disk  = true          # Defaults to false
   ActionMailer::Base.email_output_dir     = "some/path"   # Defaults to "/tmp/actionmailer_output_emails"
   
-  Then send some emails with ActionMailer, and inspect the files in the output path that you specified. The emails are 
-  saved with a .eml extension which should open in your favourite email client, for easy visual inspection.
+Then send some emails with ActionMailer, and inspect the files in the output path that you specified. The emails are saved with a .eml extension which should open in your favourite email client, for easy visual inspection.
   
 
 == Safe recipients list
@@ -29,6 +28,12 @@ Configure ActionMailer like so:
   ActionMailer::Base.safe_recipients = ["pete@example.com", "dave@foo.com"]
 
 Pete and Dave are the *only* recipients that ActionMailer will send to. All other mail will be quietly dropped. (And logged to disk, if save_emails_to_disk is enabled.)
+
+In production mode, make sure that the recipients list contains the :any symbol. 
+
+  ActionMailer::Base.safe_recipients = [:any]
+
+This is enabled by default. An empty or nil recipients list means no mail will be sent out to anyone.
 
 == Install
 
