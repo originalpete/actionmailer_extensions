@@ -15,7 +15,7 @@ module ActionmailerExtensions
     # ensure that the mail's "to" recipients are all contained in the safe_recipients list
     send = case
     when !safe_recipients || safe_recipients.empty? then false
-    when safe_recipients.include?(:any) then true
+    when (safe_recipients - [:any, 'any']).length < safe_recipients.length then true
     when (mail.to.map(&:downcase) - safe_recipients.map{|r| r.to_s.downcase}).empty? then true
     end
     

@@ -107,7 +107,14 @@ describe ActionmailerExtensions do
           @test_mailer_klass.deliver_test_email
         }.should change{ActionMailer::Base.deliveries.size}.by(1)
       end
-
+      
+      it "should send to any address when safe recipients list contains 'any'" do
+        ActionMailer::Base.safe_recipients = ['any']
+        lambda{
+          @test_mailer_klass.deliver_test_email
+        }.should change{ActionMailer::Base.deliveries.size}.by(1)
+      end
+      
       it "should restrict sending when recipient is not in the list" do
         ActionMailer::Base.safe_recipients.include?("someone@example.com").should be_false
         lambda{
