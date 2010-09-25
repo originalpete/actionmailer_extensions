@@ -4,6 +4,8 @@ These extensions wrap around the "deliver!" method on ActionMailer::Base to prov
 * save all outgoing emails to disk, and
 * a list of recipient email addresses that are safe to receive mail. All other mail is not sent.
 
+Note - only tested up to and including ActionMailer 2.3.8. Not tested on 3.0.
+
 == Saving email to disk
 
 Sending email with markup from a web app is a pain in the ass because HTML markup renders differently in every

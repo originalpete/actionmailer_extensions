@@ -12,6 +12,9 @@ begin
     gem.email = "originalpete@gmail.com"
     gem.homepage = "http://github.com/originalpete/actionmailer_extensions"
     gem.authors = ["Peter MacRobert"]
+    
+    gem.add_dependency "actionmailer", "<= 2.3.8"
+    
     gem.add_development_dependency "yard", ">= 0"
     gem.add_development_dependency "rspec", ">= 1.2.9"
     gem.add_development_dependency "rr", ">= 0.10.5"
