@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = "actionmailer_extensions"
-  s.version = "0.4.4"
+  s.version = "0.5.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Peter MacRobert"]
@@ -24,6 +24,7 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "VERSION",
+    "actionmailer_extensions.gemspec",
     "lib/actionmailer_extensions.rb",
     "spec/action_mailer_extensions_spec.rb",
     "spec/spec.opts",
