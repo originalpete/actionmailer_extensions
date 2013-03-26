@@ -1,6 +1,6 @@
 source "http://rubygems.org"
 
-gem "actionmailer", "~> 2.3.10"
+gem "actionmailer", "~> 2.3.18"
 
 group :development do
   gem "rake", "~> 10.0.3"
