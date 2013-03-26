@@ -1,9 +1,11 @@
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
-require 'spec'
-require 'spec/autorun'
+require 'rspec'
+require 'rr'
+require 'rspec/autorun'
 require 'actionmailer_extensions'
 
-Spec::Runner.configure do |config|
-  config.mock_with :rr
+RSpec.configure do |config|
+  config.include(RR::Adapters::RSpec2)
 end
+

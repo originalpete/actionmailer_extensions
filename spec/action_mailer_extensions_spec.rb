@@ -7,6 +7,7 @@ describe ActionmailerExtensions do
   def new_anon_class(parent, name="", &proc)
     klass = Class.new(parent)  
     mc = klass.instance_eval{ class << self ; self ; end }
+    mc.send(:define_method, :name) {name}
     mc.send(:define_method, :to_s) {name}
     klass.class_eval(&proc) if proc
     klass
@@ -35,9 +36,9 @@ describe ActionmailerExtensions do
 
   describe "alias chain" do
     it "should create new methods" do
-      ActionMailer::Base.instance_methods.include?("deliver!").should be_true
-      ActionMailer::Base.instance_methods.include?("deliver_with_disk_save!").should be_true
-      ActionMailer::Base.instance_methods.include?("deliver_without_disk_save!").should be_true
+      ActionMailer::Base.instance_methods.include?(:deliver!).should be_true
+      ActionMailer::Base.instance_methods.include?(:deliver_with_disk_save!).should be_true
+      ActionMailer::Base.instance_methods.include?(:deliver_without_disk_save!).should be_true
     end
   end
 

@@ -41,6 +41,7 @@ module ActionMailer
     cattr_accessor :email_output_dir
     
     private
+    
     include ActionmailerExtensions
     alias_method_chain :deliver!, :disk_save
   end
