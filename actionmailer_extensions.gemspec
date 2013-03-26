@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = "actionmailer_extensions"
-  s.version = "0.5.0"
+  s.version = "0.5.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Peter MacRobert"]
@@ -18,6 +18,7 @@ Gem::Specification.new do |s|
   ]
   s.files = [
     ".document",
+    ".ruby-version",
     "Gemfile",
     "Gemfile.lock",
     "LICENSE",
@@ -32,7 +33,7 @@ Gem::Specification.new do |s|
   ]
   s.homepage = "http://github.com/originalpete/actionmailer_extensions"
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.24"
+  s.rubygems_version = "1.8.25"
   s.summary = "Handy \"save to disk\" and \"safe recipients\" features for ActionMailer"
 
   if s.respond_to? :specification_version then
